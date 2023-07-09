@@ -22,7 +22,7 @@
 
 `ffmpeg -version`
 
-##  Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package (x86)
+Microsoft Visual C++ 2010 Service Pack 1 Redistributable Package (x86)
 <https://ytdl-org.github.io/youtube-dl/download.html>
 
 
