@@ -1,0 +1,11 @@
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/02d2P0KZWDk
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/VhZiiVnmrEY
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/xxHuURDbb7I
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/heihCpHHjbA
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/CcCw1ggftuQ
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/A4t47LowHyc
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/BFUxr_dkqxw
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/-6ZRNag3Zd0
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/GC5E8ie2pdM
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/WCisFFHDVOI
+yt-dlp.exe --extract-audio --audio-quality best --audio-format mp3 https://youtu.be/5oSz8Xip_ho
