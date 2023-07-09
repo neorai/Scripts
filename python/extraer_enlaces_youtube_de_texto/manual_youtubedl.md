@@ -2,10 +2,10 @@
 
 ## descarga
 
--error al descargar
+- error al descargar
 <https://github.com/ytdl-org/youtube-dl/tree/master#installation>
 
--Alternativa
+- Alternativa
 <https://github.com/yt-dlp/yt-dlp>
 
 - solo se necesita el exe
