@@ -11,11 +11,11 @@ def extraer_enlaces_youtube(texto):
     return enlaces_youtube
 
 # Ruta relativa para el archivo de entrada
-ruta_relativa = 'texto.txt'
+archivo_entrada_rt = 'texto.txt'
 
 # Obtener la ruta absoluta al archivo de entrada
 directorio_actual = os.path.dirname(os.path.abspath(__file__))
-archivo_entrada = os.path.join(directorio_actual, ruta_relativa)
+archivo_entrada = os.path.join(directorio_actual, archivo_entrada_rt)
 
 try:
     with open(archivo_entrada, 'r', encoding='utf-8') as file:
