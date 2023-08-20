@@ -3,7 +3,7 @@
 Instalar dependencias primero.
 Crear carpeta C:\screenshots\
 Poner el PDF en modo presenteacion o pantalla completa, girar a horizontal.
-Ejecutar  drmpdf_to_image.py tiene 30 segundos de delay antes de iniciarse, da tiempo a abrir el PDF o lo que dese capturar.
+Ejecutar  drmpdf_to_image.py tiene 30 segundos de delay antes de iniciarse, da tiempo a abrir el PDF o lo que dese capturar. modificar num_screenshots a numero de paginas del libro.
 Ejecutar images_to_PDF_image.py
 Seguir instrucciones apartado OCR
 
