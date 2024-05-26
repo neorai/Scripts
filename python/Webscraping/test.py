@@ -3,7 +3,6 @@ from bs4 import BeautifulSoup
 import pandas as pd
 import cloudscraper
 
-
 nvidia_models = [
         # Serie 1000
         "GTX 1050",
@@ -42,7 +41,6 @@ nvidia_models = [
 
 
 data = pd.read_csv("pccomponentes.csv")
-
 
 for index, row in data.iterrows():
 
