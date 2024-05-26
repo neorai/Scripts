@@ -1,11 +1,11 @@
 import pandas as pd
-import mysql.connector
+import sqlite3
+
 
 def csv_to_db(nombrecsv, tienda):
-    # Conectar a la base de datos MySQL
-    conexion = mysql.connector.connect(
-        host="localhost", user="xxxx", password="xxxxxx.", database="scraper"
-    )
+    # Conectar a la base de datos SQLite (se crea si no existe)
+    conexion = sqlite3.connect("scraper.db")
+
     # Modelos de tarjetas gráficas NVIDIA de la serie 1000 a la serie 4000
     nvidia_models = [
         # Serie 4000
@@ -140,6 +140,16 @@ def csv_to_db(nombrecsv, tienda):
     # Crear un cursor para ejecutar consultas
     cursor = conexion.cursor()
 
+    # Crear la tabla si no existe
+    cursor.execute(
+        """CREATE TABLE IF NOT EXISTS graficas (
+                        nombre TEXT PRIMARY KEY,
+                        precio REAL,
+                        modelo TEXT,
+                        tienda TEXT,
+                        categoria TEXT)"""
+    )
+
     # Insertar/update la información en la base de datos
     for index, row in data.iterrows():
         for n_model in nvidia_models:
@@ -148,18 +158,17 @@ def csv_to_db(nombrecsv, tienda):
                 precio = row["Price"]
 
                 cursor.execute(
-                    "SELECT COUNT(*) FROM graficas WHERE nombre = %s ",
-                    (nombre),
+                    "SELECT COUNT(*) FROM graficas WHERE nombre = ?", (nombre,)
                 )
                 if cursor.fetchone()[0]:
                     cursor.execute(
-                        "UPDATE tabla_usuarios SET precio = %s WHERE nombre = %s",
+                        "UPDATE graficas SET precio = ? WHERE nombre = ?",
                         (precio, nombre),
                     )
                     break
                 else:
                     cursor.execute(
-                        "INSERT INTO graficas (nombre, precio, modelo, tienda, categoria) VALUES (%s, %s, %s, %s, %s)",
+                        "INSERT INTO graficas (nombre, precio, modelo, tienda, categoria) VALUES (?, ?, ?, ?, ?)",
                         (nombre, precio, n_model, tienda, "Nvidia"),
                     )
                     break
@@ -169,9 +178,18 @@ def csv_to_db(nombrecsv, tienda):
                 nombre = row["Product"]
                 precio = row["Price"]
                 cursor.execute(
-                    "INSERT INTO graficas (nombre, precio, modelo, tienda, categoria) VALUES (%s, %s, %s, %s, %s)",
-                    (nombre, precio, a_model, tienda, "AMD"),
+                    "SELECT COUNT(*) FROM graficas WHERE nombre = ?", (nombre,)
                 )
+                if cursor.fetchone()[0]:
+                    cursor.execute(
+                        "UPDATE graficas SET precio = ? WHERE nombre = ?",
+                        (precio, nombre),
+                    )
+                else:
+                    cursor.execute(
+                        "INSERT INTO graficas (nombre, precio, modelo, tienda, categoria) VALUES (?, ?, ?, ?, ?)",
+                        (nombre, precio, a_model, tienda, "AMD"),
+                    )
                 break
 
     # Confirmar los cambios en la base de datos
@@ -182,6 +200,7 @@ def csv_to_db(nombrecsv, tienda):
     conexion.close()
 
 
+# Llamadas a la función
 csv_to_db("pccomponentes.csv", "pccomponentes")
 csv_to_db("coolmod.csv", "coolmod")
 csv_to_db("neobyte.csv", "neobyte")
