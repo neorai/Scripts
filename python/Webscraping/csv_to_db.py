@@ -199,7 +199,6 @@ def csv_to_db(nombrecsv, tienda):
     cursor.close()
     conexion.close()
 
-
 # Llamadas a la función
 csv_to_db("pccomponentes.csv", "pccomponentes")
 csv_to_db("coolmod.csv", "coolmod")
